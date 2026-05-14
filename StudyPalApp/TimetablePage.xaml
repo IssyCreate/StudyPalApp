@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudyPalApp.TimetablePage"
+             Title="TimetablePage"
+              BackgroundColor="#F7F7FB">
+    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto"
+          Padding="20"
+          RowSpacing="20">
+
+        <!-- ================= HEADER ================= -->
+        <Grid Grid.Row="0"
+              ColumnDefinitions="*,Auto"
+              VerticalOptions="Center">
+
+            <Label Text="Study Timetable"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   VerticalOptions="Center"/>
+
+            <Button Text="+ Add"
+                    Grid.Column="1"
+                    BackgroundColor="#6C5CE7"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Padding="15,8"
+                    Clicked="OnAddClicked"/>
+        </Grid>
+
+        <!-- ================= DAY SELECTOR ================= -->
+        <ScrollView Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalScrollBarVisibility="Never">
+
+            <HorizontalStackLayout Spacing="12"
+                                   Padding="0,5">
+
+                <Button Text="Mon"
+                        Clicked="OnDayClicked"/>
+
+                <Button Text="Tue"
+                        Clicked="OnDayClicked"/>
+
+                <Button Text="Wed"
+                        Clicked="OnDayClicked"/>
+
+                <Button Text="Thu"
+                        Clicked="OnDayClicked"/>
+
+                <Button Text="Fri"
+                        Clicked="OnDayClicked"/>
+
+                <Button Text="Sat"
+                        Clicked="OnDayClicked"/>
+
+                <Button Text="Sun"
+                        Clicked="OnDayClicked"/>
+
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <!-- ================= TIMER ================= -->
+        <Border Grid.Row="2"
+                BackgroundColor="White"
+                Stroke="#E0E0E0"
+                StrokeShape="RoundRectangle 12"
+                Padding="15">
+
+            <VerticalStackLayout Spacing="5">
+
+                <Label Text="Current Study Timer"
+                       FontSize="14"
+                       TextColor="Gray"
+                       HorizontalOptions="Center"/>
+
+                <Label x:Name="timerLabel"
+                       Text="00:00"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="#6C5CE7"
+                       HorizontalOptions="Center"/>
+
+            </VerticalStackLayout>
+
+        </Border>
+
+        <!-- ================= SCHEDULE LIST ================= -->
+        <CollectionView x:Name="scheduleList"
+                        Grid.Row="3">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Border Stroke="#DDD"
+                            BackgroundColor="White"
+                            StrokeShape="RoundRectangle 14"
+                            Padding="15"
+                            Margin="0,0,0,10">
+
+                        <VerticalStackLayout Spacing="12">
+
+                            <Label Text="{Binding Subject}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="Black"/>
+
+                            <Label Text="{Binding Time}"
+                                   TextColor="#555"/>
+
+                            <Label Text="{Binding DurationMinutes,
+                                   StringFormat='Duration: {0} mins'}"
+                                   TextColor="#777"/>
+
+                            <Button Text="Start Study Session"
+                                    BackgroundColor="#6C5CE7"
+                                    TextColor="White"
+                                    CornerRadius="10"
+                                    Clicked="OnStartSessionClicked"/>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+        
+
+    </Grid>
+
+
+</ContentPage>

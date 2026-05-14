@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudyPalApp.IntroQuizPage"
+             Title="IntroQuizPage">
+    <Grid RowDefinitions="Auto,*,Auto"
+          BackgroundColor="#F7F7FB">
+
+        <!-- HEADER -->
+        <VerticalStackLayout Grid.Row="0"
+                             Padding="20"
+                             Spacing="5"
+                             BackgroundColor="#6C5CE7">
+
+            <Label Text="Daily Quiz Challenge"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   TextColor="White"/>
+
+            <Label Text="Test your knowledge and earn points"
+                   TextColor="#EAEAEA"
+                   FontSize="14"/>
+
+        </VerticalStackLayout>
+
+        <!-- MAIN CONTENT -->
+        <ScrollView Grid.Row="1">
+
+            <VerticalStackLayout Padding="20"
+                                 Spacing="15">
+
+                <!-- CARD 1 -->
+                <Border BackgroundColor="White"
+                        Stroke="#E0E0E0"
+                        StrokeShape="RoundRectangle 16"
+                        Padding="15">
+
+                    <VerticalStackLayout Spacing="8">
+
+                        <Label Text="🔥 Daily Challenge Ready"
+                               FontAttributes="Bold"
+                               FontSize="18"/>
+
+                        <Label Text="Complete today's quiz to build your streak and earn points."
+                               TextColor="Gray"/>
+
+                        <HorizontalStackLayout Spacing="15">
+
+                            <Label Text="⏱ 5–10 min"
+                                   TextColor="#6C5CE7"/>
+
+                            <Label Text="🧠 5 Questions"
+                                   TextColor="#6C5CE7"/>
+
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+                <!-- CARD 2 -->
+                <Border BackgroundColor="White"
+                        Stroke="#E0E0E0"
+                        StrokeShape="RoundRectangle 16"
+                        Padding="15">
+
+                    <VerticalStackLayout Spacing="8">
+
+                        <Label Text="📚 Quiz Details"
+                               FontAttributes="Bold"
+                               FontSize="18"/>
+
+                        <Label Text="• Mixed topics (Math, IT, General Knowledge)"
+                               TextColor="Gray"/>
+
+                        <Label Text="• Earn XP points"
+                               TextColor="Gray"/>
+
+                        <Label Text="• Resets daily at midnight"
+                               TextColor="Gray"/>
+
+                        <Label Text="• Track your learning streak"
+                               TextColor="Gray"/>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+                <!-- START BUTTON -->
+                <Button Text="Start Quiz"
+                        BackgroundColor="#6C5CE7"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        CornerRadius="12"
+                        HeightRequest="50"
+                        Clicked="OnStartQuizClicked"/>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

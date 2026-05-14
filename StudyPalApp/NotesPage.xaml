@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudyPalApp.NotesPage"
+             Title="NotesPage"
+              BackgroundColor="#F7F7FB">
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+
+        <!-- ================= HEADER ================= -->
+        <Grid Grid.Row="0"
+              Padding="20"
+              ColumnDefinitions="*,Auto">
+
+            <Label Text="My Notes"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="Black"/>
+
+            <Button Text="+ Add"
+                    Grid.Column="1"
+                    Clicked="OnAddNoteClicked"/>
+
+        </Grid>
+
+        <!-- ================= PREMIUM BANNER ================= -->
+        <Border Grid.Row="1"
+                Margin="20,0,20,10"
+                BackgroundColor="#6C5CE7"
+                StrokeShape="RoundRectangle 15"
+                Padding="15">
+
+            <Grid ColumnDefinitions="*,Auto">
+
+                <VerticalStackLayout>
+
+                    <Label Text="✨ StudyPal Premium"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+
+                    <Label Text="Unlock unlimited notes and future premium features."
+                           FontSize="13"
+                           TextColor="#EAEAEA"/>
+
+                </VerticalStackLayout>
+
+                <Button Text="Upgrade"
+                        Grid.Column="1"
+                        BackgroundColor="White"
+                        TextColor="#6C5CE7"
+                        VerticalOptions="Center"/>
+
+            </Grid>
+
+        </Border>
+
+        <!-- ================= NOTES LIST ================= -->
+        <CollectionView x:Name="notesCollection"
+                        Grid.Row="2"
+                        Margin="15">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Border Stroke="#DDD"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="15"
+                            Margin="0,5">
+
+                        <VerticalStackLayout Spacing="8">
+
+                            <!-- TOP -->
+                            <Grid ColumnDefinitions="*,Auto">
+
+                                <Label Text="{Binding Subject}"
+                                       FontAttributes="Bold"
+                                       FontSize="18"/>
+
+                                <Button Text="Delete"
+                                        Grid.Column="1"
+                                        Clicked="OnDeleteClicked"/>
+
+                            </Grid>
+
+                            <!-- CONTENT -->
+                            <Label Text="{Binding Content}"
+                                   LineBreakMode="TailTruncation"
+                                   MaxLines="3"/>
+
+                            <!-- DATE -->
+                            <Label Text="{Binding CreatedAt}"
+                                   FontSize="12"
+                                   TextColor="Gray"/>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+        
+
+    </Grid>
+</ContentPage>

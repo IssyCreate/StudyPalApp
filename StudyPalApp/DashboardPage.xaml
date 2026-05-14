@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudyPalApp.DashboardPage"
+             Title="DashboardPage"
+             BackgroundColor="White">
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- ================= HEADER ================= -->
+        <VerticalStackLayout Grid.Row="0"
+                             Padding="20"
+                             Spacing="10"
+                             BackgroundColor="#6C5CE7">
+            <!-- Greeting + Notifications -->
+            <Grid ColumnDefinitions="*,Auto">
+
+                <VerticalStackLayout>
+                    <Label x:Name="greetingLabel"
+                       Text="Hello"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="Black"/>
+
+                    <Label Text="Let's crush today"
+                           TextColor="Black"
+                           FontSize="14"/>
+                </VerticalStackLayout>
+                <Switch x:Name="notifToggle"
+                        Grid.Column="1"
+                        VerticalOptions="Center"/>
+            </Grid>
+
+            <!-- Streak -->
+            <Border StrokeShape="RoundRectangle 10"
+                    StrokeThickness="0"
+                    BackgroundColor="#FFFFFF20"
+                    Padding="10">
+
+                <Border StrokeShape="RoundRectangle 10"
+        StrokeThickness="0"
+        BackgroundColor="#FFFFFF20"
+        Padding="12">
+
+                    <VerticalStackLayout Spacing="10">
+
+                        <!-- STREAK -->
+                        <Label x:Name="streakLabel"
+                           Text="🔥 0 Day Streak"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="16"/>  
+
+                        <!-- STUDY HOURS -->
+                        <Label x:Name="studyProgressLabel"
+                           Text="0 / 120 mins studied today"
+                           TextColor="Black"
+                           FontSize="13"/>
+
+                        <!-- PROGRESS -->
+                        <ProgressBar x:Name="studyProgressBar"
+                             Progress="0"
+                             HeightRequest="8"/>
+                        <Label x:Name="xpLabel"
+       Text="XP: 0"
+       TextColor="Black"
+       FontAttributes="Bold"
+       FontSize="14"/>
+
+                        <Label x:Name="levelLabel"
+       Text="Level 1"
+       TextColor="Black"
+       FontAttributes="Bold"
+       FontSize="14"/>
+
+                        <ProgressBar x:Name="xpBar"
+             Progress="0"
+             HeightRequest="8"/>
+                    </VerticalStackLayout>
+
+                </Border>
+
+            </Border>
+
+        </VerticalStackLayout>
+       
+        <!-- ================= MAIN CONTENT ================= -->
+        <ScrollView Grid.Row="1">
+            
+            <VerticalStackLayout Padding="15" Spacing="20">
+
+                <!-- QUICK ACTIONS -->
+                <Label Text="Quick Actions"
+                       FontAttributes="Bold"
+                       FontSize="16"/>
+
+                <Grid ColumnDefinitions="*,*"
+                      RowDefinitions="Auto,Auto"
+                      ColumnSpacing="10"
+                      RowSpacing="10">
+                  
+                    <Button Text="Notes"
+                            Grid.Row="1"
+                            Clicked="OnNotesClicked"/>
+
+                    <Button Text="Quiz"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Clicked="OnQuizClicked"/>
+                </Grid>
+                <!-- TODAY'S SCHEDULE -->
+                <Border StrokeThickness="1"
+        Stroke="#DDD"
+        StrokeShape="RoundRectangle 12"
+        Padding="10">
+
+                    <VerticalStackLayout Spacing="10">
+
+                        <!-- Header Row -->
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Today's Schedule"
+                   FontAttributes="Bold"
+                   FontSize="16" TextColor="Black"/>
+
+                            <Button Text="View All"
+                    Grid.Column="1"
+                    Clicked="OnViewAllScheduleClicked" TextColor="Black"/>
+                        </Grid>
+
+                        <!-- List -->
+                        <CollectionView x:Name="todayList">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Border Stroke="#DDD"
+                            StrokeShape="RoundRectangle 10"
+                            Padding="10"
+                            Margin="5">
+
+                                        <VerticalStackLayout>
+
+                                            <Label Text="{Binding Subject}"
+                           FontAttributes="Bold"
+                           TextColor="Black"/>
+
+                                            <Label Text="{Binding Time}"
+                           TextColor="Black"/>
+
+                                            <Label Text="{Binding DurationMinutes,
+                           StringFormat='Duration: {0} mins'}"
+                           FontSize="12"
+                           TextColor="Black"/>
+
+                                        </VerticalStackLayout>
+
+                                    </Border>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- UPCOMING DEADLINES -->
+                <Border StrokeThickness="1"
+                    Stroke="#DDD"
+                    StrokeShape="RoundRectangle 12"
+                    Padding="10">   
+
+                    <VerticalStackLayout Spacing="10">
+
+                        <!-- Header -->
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Upcoming Deadlines"
+                   FontAttributes="Bold"
+                   FontSize="16" TextColor="Black"/>
+
+                            <Button Text="View All"
+                    Grid.Column="1"
+                    Clicked="OnViewAllDeadlinesClicked" TextColor="Black"/>
+                        </Grid>
+
+                        <!-- Dynamic List -->
+                        <CollectionView x:Name="upcomingList">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Border Stroke="#DDD"
+                            StrokeShape="RoundRectangle 10"
+                            Padding="10"
+                            Margin="5">
+
+                                        <VerticalStackLayout>
+
+                                            <Label Text="{Binding title}" TextColor="Black"
+                                   FontAttributes="Bold"/>
+
+                                            <Label Text="{Binding subject}" TextColor="Black"/>
+
+                                            <Label Text="{Binding due_date}" TextColor="Black"
+                                   FontSize="12"
+                                  />
+
+                                        </VerticalStackLayout>
+
+                                    </Border>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+                <!-- DAILY QUIZ -->
+                <Border BackgroundColor="#6C5CE7"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="15">
+
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label Text="Daily Quiz Challenge"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               FontSize="16"/>
+
+                        <Label Text="Let's challenge yourself today"
+                               TextColor="#EAEAEA"/>
+
+                        <Button Text="Start Quiz"
+                                BackgroundColor="White"
+                                TextColor="#6C5CE7"
+                                Clicked="OnQuizClicked"/>
+                    </VerticalStackLayout>
+
+                </Border>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+       
+     
+    </Grid>
+</ContentPage>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="StudyPalApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:StudyPalApp"
+    Title="StudyPalApp"
+    FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="True">
+
+    <!-- ================= AUTH FLOW ================= -->
+
+    <ShellContent
+        Route="splash"
+        ContentTemplate="{DataTemplate local:MainPage}" />
+
+    <ShellContent
+        Route="terms"
+        ContentTemplate="{DataTemplate local:TermsPage}" />
+
+    <ShellContent
+        Route="login"
+        ContentTemplate="{DataTemplate local:MainPage}" />
+
+
+
+    <!-- ================= MAIN APP ================= -->
+
+    <TabBar Route="main">
+
+        <!-- DASHBOARD -->
+        <ShellContent
+            Title="Home"
+            Route="dashboard"
+            ContentTemplate="{DataTemplate local:DashboardPage}" />
+
+        <!-- TIMETABLE -->
+        <ShellContent
+            Title="Timetable"
+            Route="timetable"
+            ContentTemplate="{DataTemplate local:TimetablePage}" />
+
+        <!-- TASKS -->
+        <ShellContent
+            Title="Tasks"
+            Route="tasks"
+            ContentTemplate="{DataTemplate local:AssignmentsPage}" />
+
+        <!-- PROGRESS -->
+        <ShellContent
+            Title="Progress"
+            Route="progress"
+            ContentTemplate="{DataTemplate local:ProgressPage}" />
+
+        <!-- NOTES -->
+        <ShellContent
+            Title="Notes"
+            Route="notes"
+            ContentTemplate="{DataTemplate local:NotesPage}" />
+
+        <!-- QUIZ -->
+        <ShellContent
+            Title="Quiz"
+            Route="quiz"
+            ContentTemplate="{DataTemplate local:IntroQuizPage}" />
+
+    </TabBar>
+</Shell>

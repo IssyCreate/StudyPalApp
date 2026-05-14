@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudyPalApp.QuizPage"
+             Title="QuizPage"
+       BackgroundColor="#F7F7FB">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+
+        <!-- ================= TOP BAR ================= -->
+        <Grid Grid.Row="0"
+              Padding="15"
+              BackgroundColor="#6C5CE7"
+              ColumnDefinitions="*,Auto">
+
+            <!-- TIMER -->
+            <Label x:Name="timerLabel"
+                   Text="⏱ 10:00"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   FontSize="16"/>
+
+            <!-- QUESTION COUNTER -->
+            <Label x:Name="counterLabel"
+                   Grid.Column="1"
+                   Text="1/5"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   FontSize="16"/>
+
+        </Grid>
+
+        <!-- ================= PROGRESS BAR ================= -->
+        <ProgressBar x:Name="quizProgress"
+                     Grid.Row="1"
+                     Progress="0"
+                     HeightRequest="5"
+                     ProgressColor="#6C5CE7"/>
+
+        <!-- ================= QUESTION AREA ================= -->
+        <ScrollView Grid.Row="2">
+
+            <VerticalStackLayout Padding="20"
+                                 Spacing="25">
+
+                <!-- QUESTION -->
+                <Label x:Name="questionLabel"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"/>
+
+                <!-- ANSWERS -->
+                <Button x:Name="option1Btn"
+                        Clicked="OnAnswerClicked"
+                        BackgroundColor="White"
+                        TextColor="Black"/>
+
+                <Button x:Name="option2Btn"
+                        Clicked="OnAnswerClicked"
+                        BackgroundColor="White"
+                        TextColor="Black"/>
+
+                <Button x:Name="option3Btn"
+                        Clicked="OnAnswerClicked"
+                        BackgroundColor="White"
+                        TextColor="Black"/>
+
+                <Button x:Name="option4Btn"
+                        Clicked="OnAnswerClicked"
+                        BackgroundColor="White"
+                        TextColor="Black"/>
+
+                <!-- HINT SECTION -->
+                <Border Stroke="#DDD"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="12"
+                        BackgroundColor="White">
+
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label Text="💡 Need a hint?"
+                               FontAttributes="Bold"/>
+
+                        <Button Text="Get Hint"
+                                Clicked="OnHintClicked"
+                                BackgroundColor="#00B894"
+                                TextColor="White"/>
+
+                        <Label Text="Free users have limited hints per quiz."
+                               FontSize="12"
+                               TextColor="Gray"/>
+                        <Frame x:Name="bannerFrame"
+CornerRadius="20"
+Padding="15"
+Margin="10"
+BackgroundColor="Purple">
+
+                            <HorizontalStackLayout Spacing="10">
+
+                                <Image x:Name="cloverImage"
+        Source="clover.png"
+        HeightRequest="40"
+        WidthRequest="40" />
+
+                                <VerticalStackLayout>
+                                    <Label Text="Clover says:"
+            FontAttributes="Bold"
+            TextColor="White"/>
+
+                                    <Label x:Name="CloverMessage"
+            Text="Loading..."
+            TextColor="White"/>
+                                </VerticalStackLayout>
+
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </VerticalStackLayout>
+                    
+
+                </Border>
+
+                <!-- SCORE -->
+                <Label x:Name="scoreLabel"
+                       Text="Score: 0"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"/>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+        <!--Clover Banner-->
+        
+        <!-- OPTIONAL FOOTER SPACE -->
+        <BoxView Grid.Row="3"
+                 HeightRequest="10"
+                 Color="Transparent"/>
+
+    </Grid>
+
+</ContentPage>

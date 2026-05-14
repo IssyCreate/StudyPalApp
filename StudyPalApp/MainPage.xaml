@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudyPalApp.MainPage">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#FA08F5" Offset="0.0"/>
+            <!-- soft pink -->
+            <GradientStop Color="#8B5CF6" Offset="1.0"/>
+            <!-- purple -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <!--Logo-->
+            <Image x:Name="LogoImage"
+                Source="logo.png"
+                WidthRequest="180"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="application logo"  
+                Opacity="0"
+                Scale="0.5"
+                />
+               
+            <!--App Name-->
+            <Label x:Name="AppName"
+                Text="StudyPal"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                TextColor="White"
+                Opacity="0"
+                HorizontalOptions="Center"
+                />
+               <!--Slogan-->
+            <Label x:Name="Slogan"
+                Text="Your AI Sudy Companion"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level3"
+                SemanticProperties.Description="Empty" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

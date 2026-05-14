@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudyPalApp.LoginSignupPage"
+             Title="LoginSignupPage"
+             BackgroundColor="WhiteSmoke"
+             >
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+                <!-- Title -->
+                <Label Text="Welcome to Study Pal"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="Black"/>
+
+                <!-- Toggle Tabs -->
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                    <Button Text="Login" Clicked="OnLoginTabClicked" x:Name="loginTabBtn"/>
+                    <Button Text="Sign Up" Clicked="OnSignupTabClicked" x:Name="signupTabBtn"/>
+                </HorizontalStackLayout>
+
+                <!-- LOGIN FORM -->
+                <VerticalStackLayout x:Name="loginForm" Spacing="10">
+                <Label Text="Welcome back! Continue your journey with us today" TextColor="Black"/>
+                <Entry x:Name="loginEmail" Placeholder="Email" Keyboard="Email" TextColor="Black"/>
+                <Entry x:Name="loginPassword" Placeholder="Password" IsPassword="True" TextColor="Black"/>
+
+                    <Button Text="Login" Clicked="OnLoginClicked"/>
+
+                </VerticalStackLayout>
+
+                <!-- SIGNUP FORM -->
+                <VerticalStackLayout x:Name="signupForm" IsVisible="False" Spacing="10">
+                <Label Text="Start your journey with us today" TextColor="Black"/>
+                <Entry x:Name="signupName" Placeholder="Full Name" TextColor="Black"/>
+                <Entry x:Name="signupEmail" Placeholder="Email" Keyboard="Email" TextColor="Black"/>
+                <Entry x:Name="signupPassword" Placeholder="Password" IsPassword="True" TextColor="Black"/>
+                <Entry x:Name="signupAge" Placeholder="Age" Keyboard="Numeric" TextColor="Black"/>
+
+                    <Button Text="Create Account" Clicked="OnSignupClicked"/>
+
+                </VerticalStackLayout>
+
+                <!-- Divider -->
+                <Label Text="OR" HorizontalOptions="Center"/>
+
+                <!-- Google Button (placeholder) -->
+                <Button Text="Continue with Google" Clicked="OnGoogleClicked"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </ContentPage>

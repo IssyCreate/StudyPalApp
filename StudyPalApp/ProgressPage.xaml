@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudyPalApp.ProgressPage"
+             Title="ProgressPage"
+             BackgroundColor="White">
+    <VerticalStackLayout>
+        <Grid RowDefinitions="*,Auto">
+
+            <!-- MAIN CONTENT -->
+            <ScrollView Grid.Row="0">
+
+                <VerticalStackLayout Padding="20"
+                                 Spacing="20">
+
+                    <!-- HEADER -->
+                    <VerticalStackLayout Spacing="5">
+
+                        <Label Text="Your Progress"
+                           FontSize="28"
+                           FontAttributes="Bold"/>
+
+                        <Label Text="Track your study growth and consistency"
+                           FontSize="14"
+                           TextColor="Gray"/>
+
+                    </VerticalStackLayout>
+                    <!--Clover Banner-->
+                    <Frame x:Name="bannerFrame"
+CornerRadius="20"
+Padding="15"
+Margin="10"
+BackgroundColor="Purple">
+
+                        <HorizontalStackLayout Spacing="10">
+
+                            <Image x:Name="cloverImage"
+        Source="clover.png"
+        HeightRequest="40"
+        WidthRequest="40" />
+
+                            <VerticalStackLayout>
+                                <Label Text="Clover says:"
+            FontAttributes="Bold"
+            TextColor="White"/>
+
+                                <Label x:Name="CloverMessage"
+            Text="Loading..."
+            TextColor="White"/>
+                            </VerticalStackLayout>
+
+                        </HorizontalStackLayout>
+                    </Frame>
+                    <!-- DAILY GOAL -->
+                    <Border Stroke="#DDD"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="15">
+
+                        <VerticalStackLayout Spacing="10">
+
+                            <Label Text="Daily Study Goal"
+                               FontAttributes="Bold"
+                               FontSize="18"/>
+
+                            <Label x:Name="dailyGoalLabel"
+                               Text="0 / 120 mins"/>
+
+                            <ProgressBar x:Name="dailyProgressBar"
+                                     Progress="0"/>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                    <!-- WEEKLY STATS -->
+                    <Border Stroke="#DDD"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="15">
+
+                        <VerticalStackLayout Spacing="10">
+
+                            <Label Text="Weekly Stats"
+                               FontAttributes="Bold"
+                               FontSize="18"/>
+
+                            <Label x:Name="sessionsLabel"
+                               Text="Sessions Completed: 0"/>
+
+                            <Label x:Name="streakLabel"
+                               Text=" Current Streak: 0 days"/>
+
+                            <Label x:Name="totalMinutesLabel"
+                               Text="Total Study Minutes: 0"/>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                    <!-- SUBJECT BREAKDOWN -->
+                    <Border Stroke="#DDD"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="15">
+
+                        <VerticalStackLayout Spacing="10">
+
+                            <Label Text="Subject Breakdown"
+                               FontAttributes="Bold"
+                               FontSize="18"/>
+
+                            <CollectionView x:Name="subjectCollection">
+
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Border Stroke="#EEE"
+                                            StrokeShape="RoundRectangle 10"
+                                            Padding="10"
+                                            Margin="0,5">
+
+                                            <Grid ColumnDefinitions="*,Auto">
+
+                                                <Label Text="{Binding subject}"
+                                                   FontAttributes="Bold"/>
+
+                                                <Label Grid.Column="1"
+                                                   Text="{Binding total_minutes}"/>
+
+                                            </Grid>
+
+                                        </Border>
+
+                                    </DataTemplate>
+
+                                </CollectionView.ItemTemplate>
+
+                            </CollectionView>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                    <!-- CLOVER CARD -->
+                    <Border BackgroundColor="#6C5CE7"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="15">
+
+                        <VerticalStackLayout Spacing="10">
+
+                            <Label Text="💚 Clover Says"
+                               FontAttributes="Bold"
+                               FontSize="18"
+                               TextColor="White"/>
+
+                            <Label Text="Consistency beats cramming. Keep going — you're building momentum."
+                               TextColor="White"/>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                </VerticalStackLayout>
+
+            </ScrollView>
+
+            
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
